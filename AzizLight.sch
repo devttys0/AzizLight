@@ -34,10 +34,10 @@ EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
 Sheet 1 1
-Title ""
-Date ""
-Rev ""
-Comp ""
+Title "Voice activated AC outlet switch"
+Date "2016-10-13"
+Rev "1.0"
+Comp "AnalogZoo, http://www.analogzoo.com"
 Comment1 ""
 Comment2 ""
 Comment3 ""
