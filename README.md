@@ -3,7 +3,7 @@ Overview
 
 This circuit allows the user to turn an AC outlet on or off using a simple phrase, such as "Aziz, light!!". Ultimately, this is not an intelligent circuit in that it does not repsond to specific commands, but only to the amplitude of the detected speech (in other words, it is a glorified "clapper").
 
-It does provide the *illusion* of intelligence however, by delaying activation of the AC outlet switch for a short period of time, rather than responding immediately to a single loud noise. This allows the end user to utter a short phrase before an action is taken, and simulates the delayed response time that an intelligent system may have when processing/executing a verbal command.
+It does provide the *illusion* of intelligence however, by delaying activation of the AC outlet switch for a short period of time, rather than responding immediately to a single loud noise, or some pre-defined sequence of noises. This allows the end user to utter some short, arbitrary phrase before an action is taken, and also serves to simulate the delayed response time that an intelligent system may have when processing/executing a verbal command.
 
 The circuit also attempts to prevent/mitigate the false positive responses which typically plague these types of systems by:
 
@@ -25,7 +25,7 @@ Resistors R10 and R17 set the gain at 100, while diode D1 passes the positive ha
 
 Diodes D4, D5 and D6 prevent the op amp's output from saturating in the presence of strong audio signals.
 
-R10 provides biasing to the electret microphone, with R10 and C5 forming a high-pass filter with a cutoff at 284Hz. R17 and C9 form a low-pass filter with a cutoff frequency at 2.8kHz.
+R10 provides biasing to the electret microphone, with R10 and C5 forming a high-pass filter with a cutoff at 284Hz. R17 and C9 form a low-pass filter with a cutoff frequency at 2.8kHz. This provides a ~2.5kHz passband, attenuating higher or lower frequency noise.
 
 Envelope Detector
 =================
@@ -35,7 +35,7 @@ The rectified audio signal is passed through the low-pass filter formed by R12 a
 Signal Processing
 =================
 
-Comparator U2a serves as a level detection circuit, only outputting a logic '1' (+5V) if the input signal's envelope voltage on capacitor C6 exceeds the set threshold voltage. The threshold voltage is set by R18, R20, R22, and potentiometer RV1, where RV1 provides an adjustable sensitivity setting by changing the minimum threshold voltage. Note that the hysteresis resistors R2 and R14 also affect the threshold voltage, but are fixed and not adjustable.
+Comparator U2a monitors the signal's envelop voltage on capacitor C6, only outputting a logic '1' (+5V) if C6's voltage exceeds the set threshold voltage. The threshold voltage is set by R18, R20, R22, and potentiometer RV1, where RV1 provides an adjustable sensitivity setting by changing the minimum threshold voltage. Note that the hysteresis resistors R2 and R14 also affect the threshold voltage, but are fixed and not adjustable.
 
 The purpose of setting this minimum threshold voltage is to ensure that a sequence of low-amplitude audio signals do not ultimately trigger relay K1; the user-adjustable sensitivity control is an added bonus.
 
@@ -43,7 +43,7 @@ Comparator U2a's output is used to charge capacitor C7 via resistor R1 (U2 has a
 
 The delay caused by the charging of C7 is desirable, as it allows for a sequence of syllables to be uttered before relay K1 is triggered. Not triggering the relay at the first sign of a strong audio signal provides the illusion of intelligence; the user can utter a short phrase (e.g., "Aziz, light!") before the relay is triggered.
 
-The slow bleed off of C7 is necessary so that a) audio signals do not cause a build up of charge over an indefinite period of time, and b) the relay is turned off after some relatively short period of time.
+The slow bleed off of C7 is necessary so that a) audio signals do not cause a build up of charge over an indefinite period of time, and b) once activated, the relay is turned off after some relatively short period of time.
 
 Level Detection
 ===============
@@ -52,7 +52,7 @@ Comparator U2b monitors the voltage of C7 and outputs a logic "1" (+5V) when C7'
 
 Being an open-collector output, the +5V from the comparator charges capacitor C8 via resistor R13. This delays the turn on of transistors Q1/Q2; as with the charging of capacitor C7, this delay is done to provide the illusion of intelligence. Specifically, it simulates the delayed response time that a true intelligent system might have when processing and acting on a verbal command.
 
-As the voltage on C7 increases, it will turn on transistor Q2, which, in turn, will turn off transistor Q1. The outputs from Q1 and Q2 provide both inverted and non-inverted logic outputs, which can be selected by switch SW1. If the output is taken from Q1, then the relay will be normally off, and will be turned on when a verbal command is given; if the output is taken from Q2, then the relay will be normally on, and will be turned off when a verbal command is given. Note that these settings are mutually exclusive.
+As the voltage on C8 increases, it will turn on transistor Q2, which serves to buffer C7 and provide an inverted logic output. When Q2 turns on, Q1 will turn off, providing the non-inverted logic output. The inverted and non-inverted logic outputs can be selected from by switch SW1. If the output is taken from Q1, then the relay will be normally off, and will be turned on when a verbal command is given; if the output is taken from Q2, then the relay will be normally on, and will be turned off when a verbal command is given. Note that these settings are mutually exclusive.
 
 When the voltage on C7 bleeds off below U2b's logic-low threshold level, U2b will turn off. This means that the voice-activated command will only take effect for a finite period of time (about 20-30 seconds, depending on the charge of C7).
 
