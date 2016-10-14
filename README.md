@@ -3,14 +3,14 @@ Overview
 
 This circuit allows the user to turn an AC outlet on or off using a simple phrase, such as "Aziz, light!!". Ultimately, this is not an intelligent circuit in that it does not repsond to specific commands, but only to the amplitude of the detected speech (in other words, it is a glorified "clapper").
 
-It does provide the *illusion* of intelligence however, by delaying activation of the AC outlet switch for a short period of time, rather than responding immediately to a single loud noise, or some pre-defined sequence of noises. This allows the end user to utter some short, arbitrary phrase before an action is taken, and also serves to simulate the delayed response time that an intelligent system may have when processing/executing a verbal command.
+It does provide the *illusion* of intelligence however, by delaying activation of the AC outlet switch for a short period of time, rather than responding immediately to a single loud noise, or some pre-defined sequence of noises. This allows the end user to utter some arbitrary phrase before an action is taken, and also serves to simulate the delayed response time that an intelligent system may have when processing/executing a verbal command.
 
 The circuit also attempts to prevent/mitigate the false positive responses which typically plague these types of systems by:
 
  1. Filtering out unwanted audio frequencies.
  2. Ignoring low-level audio signals.
- 3. The cricuit can either turn the AC outlent on or off, **not both**. Otherwise, if using this circuit to turn on, say, a TV, the audio output of the TV may re-activate the circuit and turn itself off (a common problem with "the clapper").
- 4. The circuit will only activate for a short period of time (20-30 seconds). This way, if a false positive is encountered, the effect is only temporary.
+ 3. The cricuit can either turn the AC outlent on or off, **not both**. Otherwise, if using this circuit to turn on, say, a TV, the audio output of the TV may re-activate the circuit and turn the TV back off (a common problem with "the clapper").
+ 4. The circuit will only activate for a short period of time (~60 seconds). This way if a false positive is encountered, the effect is only temporary.
 
 These mitigations, particularly #4, place restrictions on the usefulness of the circuit, but are perfectly acceptable for many applications (e.g., temporarily turning the lights on/off). Mitigation #4 also serves to more accurately simulate a sleepy "Aziz", which was the inspiration for this circuit:
 
@@ -50,17 +50,27 @@ Level Detection
 
 Comparator U2b monitors the voltage of C7 and outputs a logic "1" (+5V) when C7's voltage reaches the comparator's logic-high threshold voltage which is set by R21 and R19, as well as the hysteresis resistors R9 and R15.
 
-Being an open-collector output, the +5V from the comparator charges capacitor C8 via resistor R13. This delays the turn on of transistors Q1/Q2; as with the charging of capacitor C7, this delay is done to provide the illusion of intelligence. Specifically, it simulates the delayed response time that a true intelligent system might have when processing and acting on a verbal command.
+Being an open-collector output, the +5V from the comparator charges capacitor C8 via resistors R27/R13. This delays the turn on of transistors Q1/Q2. When C8's voltage is large enough, it will turn on Q1 which, in turn, will turn off Q2 and Q3.
 
-As the voltage on C8 increases, it will turn on transistor Q2, which serves to buffer C7 and provide an inverted logic output. When Q2 turns on, Q1 will turn off, providing the non-inverted logic output. The inverted and non-inverted logic outputs can be selected from by switch SW1. If the output is taken from Q1, then the relay will be normally off, and will be turned on when a verbal command is given; if the output is taken from Q2, then the relay will be normally on, and will be turned off when a verbal command is given. Note that these settings are mutually exclusive.
+To maintain the illusion of intelligence, C8's voltage must be kept below Q1's Vgs until after the user is finished speaking their phrase. To ensure this, C8 is discharged through transistor Q4 whenever the input audio amplitude is loud enough to trigger comparator U2a. This way, as long as the user continues talking, C8 will be continually discharged, and Q1 will remain off. After a short pause however, C8 will charge up and turn on Q1.
+
+Once activated, the output must remain latched for the time constant determined by C7/R16 (see "Signal Processing" above). Transistor Q3 is included to ensure that any audio input does not prematurely turn off Q1 by discharging C8 through Q4. When Q1 is turn on, Q3 will be turned off, preventing C8 from discharging through Q4, regardless of any input audio.
+
+Transistors Q1 and Q2 provide inverted and non-inverted logic outputs, respectively, which can be selected from by switch SW1. If the output is taken from Q2, then the relay will be normally off, and will be turned on when a verbal command is given; if the output is taken from Q1, then the relay will be normally on, and will be turned off when a verbal command is given. Note that these settings are mutually exclusive.
+
+as with the charging of capacitor C7, this delay is done to provide the illusion of intelligence. Specifically, it simulates the delayed response time that a true intelligent system might have when processing and acting on a verbal command.
 
 When the voltage on C7 bleeds off below U2b's logic-low threshold level, U2b will turn off. This means that the voice-activated command will only take effect for a finite period of time (about 20-30 seconds, depending on the charge of C7).
+
+Resistor R25 is included to de-Q any potential LC resonant circuit formed between Q2/Q3's gate capacitances and the potential load inductance.
 
 Relay Driver
 ============
 
-The relay driver circuitry is housed in a separate enclosure from the rest of the circuit, and is used to drive relay K1 on/off in order to turn a standard AC outlet on/off.
+The relay driver circuitry is housed in a separate enclosure from the rest of the circuit, and is used to drive relay K1 on/off in order to turn a standard AC outlet on/off. A standard audio cable was used to connect the control circuitry to the relay driver board.
 
-Transistor Q3 drives the relay's inductor, while resistor R23 limits Q3's base current. Resistor R24 is provided as a cautionary measure to bleed off any charge build-up due to Q3's input capacitance.
+Transistor Q5 drives the relay's inductor. R24 is a pull-down resistor to ensure the discharge of Q5's gate capacitance, and R23 is included to dampen any potential resonant circuit formed by the gate capacitance and the source's inductance. Since the relay driver is connected to the control circuitry via a long-ish cable, the cable's inductance can be non-negligable.
 
 Diode D7 is a flyback diode, which protects Q3 from the inductive kick-back of suddenly removing current from K1's inductor.
+
+Switch SW2 provides a manual override to always turn the AC outlet on, if desired.
