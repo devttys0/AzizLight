@@ -3,9 +3,9 @@ Overview
 
 This circuit allows the user to turn an AC outlet on or off using a simple phrase, such as "Aziz, light!!". Ultimately, this is not an intelligent circuit in that it does not repsond to specific commands, but only to the amplitude of the detected speech (in other words, it is a glorified "clapper").
 
-It does provide the *illusion* of intelligence however, by delaying activation of the AC outlet switch for a short period of time, rather than responding immediately to a single loud noise, or some pre-defined sequence of noises. This allows the end user to utter some arbitrary phrase before an action is taken, and also serves to simulate the delayed response time that an intelligent system may have when processing/executing a verbal command.
+It does provide the *illusion* of intelligence however, by delaying activation of the AC outlet switch until the user finishes their chosen phrase, and by taking steps to prevent/mitigate false positive responses.
 
-The circuit also attempts to prevent/mitigate the false positive responses which typically plague these types of systems by:
+The circuit attempts to prevent/mitigate the false positive responses which typically plague these types of systems by:
 
  1. Filtering out unwanted audio frequencies.
  2. Ignoring low-level audio signals.
