@@ -50,7 +50,7 @@ Level Detection
 
 Comparator U2b monitors the voltage of C7 and outputs a logic "1" (+5V) when C7's voltage reaches the comparator's logic-high threshold voltage which is set by R21 and R19, as well as the hysteresis resistors R9 and R15.
 
-Being an open-collector output, the +5V from the comparator charges capacitor C8 via resistors R27/R13. This delays the turn on of transistors Q1/Q2. When C8's voltage is large enough, it will turn on Q1 which, in turn, will turn off Q2 and Q3.
+Being an open-collector output, the +5V from the comparator charges capacitor C8 via resistor R13. This delays the turn on of transistors Q1/Q2. When C8's voltage is large enough, it will turn on Q1 which, in turn, will turn off Q2 and Q3.
 
 To maintain the illusion of intelligence, C8's voltage must be kept below Q1's Vgs until after the user is finished speaking their phrase. To ensure this, C8 is discharged through transistor Q4 whenever the input audio amplitude is loud enough to trigger comparator U2a. This way, as long as the user continues talking, C8 will be continually discharged, and Q1 will remain off. After a short pause however, C8 will charge up and turn on Q1.
 
