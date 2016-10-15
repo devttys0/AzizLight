@@ -294,12 +294,12 @@ U 1 1 57FEFBA0
 P 9350 4100
 F 0 "U3" H 9350 4300 50  0000 L CNN
 F 1 "MCP601" H 9350 3900 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23-5" H 9400 4300 50  0001 C CNN
+F 2 "SMD_Packages:SOIC-8-N" H 9400 4300 50  0001 C CNN
 F 3 "http://www.microchip.com/mymicrochip/filehandler.aspx?ddocname=en011761" H 9350 4350 50  0001 C CNN
 F 4 "Microchip" H 9350 4100 60  0001 C CNN "Manufacturer"
-F 5 "MCP601T-I/OT" H 9350 4100 60  0001 C CNN "Manufacturer Part #"
+F 5 "MCP601-I/SN" H 9350 4100 60  0001 C CNN "Manufacturer Part #"
 F 6 "Digikey" H 9350 4100 60  0001 C CNN "Supplier"
-F 7 "MCP601T-I/OTCT-ND" H 9350 4100 60  0001 C CNN "Supplier Part #"
+F 7 "MCP601-I/SN-ND" H 9350 4100 60  0001 C CNN "Supplier Part #"
 	1    9350 4100
 	1    0    0    -1  
 $EndComp
@@ -530,21 +530,6 @@ F 1 "+5V" H 13550 3340 50  0000 C CNN
 F 2 "" H 13550 3200 50  0000 C CNN
 F 3 "" H 13550 3200 50  0000 C CNN
 	1    13550 3200
-	1    0    0    -1  
-$EndComp
-$Comp
-L 7805 U4
-U 1 1 57FFFE61
-P 7750 7950
-F 0 "U4" H 7900 7754 50  0000 C CNN
-F 1 "7805" H 7750 8150 50  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:TO-252-2Lead" H 7750 7950 50  0001 C CNN
-F 3 "http://www.onsemi.com/pub_link/Collateral/MC7800-D.PDF" H 7750 7950 50  0001 C CNN
-F 4 "ON Semiconductor" H 7750 7950 60  0001 C CNN "Manufacturer"
-F 5 "MC7805BDTRKG" H 7750 7950 60  0001 C CNN "Manufacturer Part #"
-F 6 "Digikey" H 7750 7950 60  0001 C CNN "Supplier"
-F 7 "MC7805BDTRKGOSCT-ND" H 7750 7950 60  0001 C CNN "Supplier Part #"
-	1    7750 7950
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1653,4 +1638,19 @@ F 3 "" H 8700 8500 50  0000 C CNN
 $EndComp
 Wire Wire Line
 	8700 8350 8700 8500
+$Comp
+L LM7805CT U4
+U 1 1 58021C9C
+P 7750 7950
+F 0 "U4" H 7550 8150 50  0000 C CNN
+F 1 "MC7805" H 7750 8150 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:TO-252-2Lead" H 7750 8050 50  0001 C CIN
+F 3 "http://www.onsemi.com/pub_link/Collateral/MC7800-D.PDF" H 7750 7950 50  0001 C CNN
+F 4 "ON Semiconductor" H 7750 7950 60  0001 C CNN "Manufacturer"
+F 5 "MC7805BDTRKG" H 7750 7950 60  0001 C CNN "Manufacturer Part #"
+F 6 "Digikey" H 7750 7950 60  0001 C CNN "Supplier"
+F 7 "MC7805BDTRKGOSCT-ND" H 7750 7950 60  0001 C CNN "Supplier Part #"
+	1    7750 7950
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
