@@ -1,6 +1,6 @@
-update=22/05/2015 07:44:53
+update=Saturday, October 15, 2016 'PMt' 02:50:43 PM
 version=1
-last_client=kicad
+last_client=eeschema
 [general]
 version=1
 RootSch=
@@ -60,3 +60,4 @@ LibName26=opto
 LibName27=atmel
 LibName28=contrib
 LibName29=valves
+LibName30=libs/EESchema/w_relay

@@ -28,12 +28,14 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:w_relay
+LIBS:RelayDriver-cache
 EELAYER 25 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
 Sheet 1 1
-Title "Voice activated AC outlet switch"
+Title "Relay Driver Board"
 Date "2016-10-13"
 Rev "1.2"
 Comp "AnalogZoo, http://www.analogzoo.com"
@@ -67,12 +69,12 @@ $EndComp
 $Comp
 L GND #PWR34
 U 1 1 57FF7128
-P 7750 6550
-F 0 "#PWR34" H 7750 6300 50  0001 C CNN
-F 1 "GND" H 7750 6400 50  0000 C CNN
-F 2 "" H 7750 6550 50  0000 C CNN
-F 3 "" H 7750 6550 50  0000 C CNN
-	1    7750 6550
+P 7750 6600
+F 0 "#PWR34" H 7750 6350 50  0001 C CNN
+F 1 "GND" H 7750 6450 50  0000 C CNN
+F 2 "" H 7750 6600 50  0000 C CNN
+F 3 "" H 7750 6600 50  0000 C CNN
+	1    7750 6600
 	1    0    0    -1  
 $EndComp
 Text GLabel 6700 6100 0    60   Input ~ 0
@@ -138,11 +140,17 @@ F 7 "IRLML2060TRPBFCT-ND" H 7650 6050 60  0001 C CNN "Supplier Part #"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7750 5650 7750 5850
+	7750 5650 7750 5750
 Wire Wire Line
-	7150 6100 7450 6100
+	7750 5750 7750 5850
 Wire Wire Line
-	7750 5150 7750 5350
+	7150 6100 7350 6100
+Wire Wire Line
+	7350 6100 7450 6100
+Wire Wire Line
+	7750 5150 7750 5250
+Wire Wire Line
+	7750 5250 7750 5350
 Wire Wire Line
 	8250 5300 8250 5250
 Wire Wire Line
@@ -159,22 +167,26 @@ Connection ~ 7350 6100
 Wire Wire Line
 	7350 6600 7350 6550
 Wire Wire Line
-	7750 6550 7750 6250
+	7750 6600 7750 6250
 Wire Wire Line
-	8550 5250 8900 5250
+	8550 5250 8850 5250
+Wire Wire Line
+	8850 5250 8900 5250
 Wire Wire Line
 	8550 5250 8550 5300
 Wire Wire Line
 	8500 5700 8500 5750
 Wire Wire Line
-	8500 5750 8900 5750
+	8500 5750 8850 5750
+Wire Wire Line
+	8850 5750 8900 5750
 Wire Wire Line
 	6700 6100 6850 6100
 $Comp
-L SPST SW2
+L SPST SW3
 U 1 1 580105DB
 P 9850 5550
-F 0 "SW2" V 9850 5750 50  0000 C CNN
+F 0 "SW3" V 9850 5750 50  0000 C CNN
 F 1 "SPST" H 9850 5450 50  0001 C CNN
 F 2 "" H 9850 5550 50  0000 C CNN
 F 3 "" H 9850 5550 50  0000 C CNN
@@ -196,10 +208,10 @@ Wire Wire Line
 	8850 6200 8850 5750
 Connection ~ 8850 5750
 $Comp
-L R R?
+L R R26
 U 1 1 58029A35
 P 7000 6100
-F 0 "R?" V 7080 6100 50  0000 C CNN
+F 0 "R26" V 7080 6100 50  0000 C CNN
 F 1 "4.7k" V 7000 6100 50  0000 C CNN
 F 2 "Resistors_SMD:R_0805_HandSoldering" V 6930 6100 50  0001 C CNN
 F 3 "http://www.yageo.com/NewPortal/yageodocoutput?fileName=/pdf/R-Chip/PYu-RC_Group_51_RoHS_L_4.pdf" H 7000 6100 50  0001 C CNN
@@ -211,10 +223,10 @@ F 7 "311-4.70KCRCT-ND" V 7000 6100 60  0001 C CNN "Supplier Part #"
 	0    1    1    0   
 $EndComp
 $Comp
-L R R?
+L R R27
 U 1 1 5802A559
 P 7350 6400
-F 0 "R?" V 7430 6400 50  0000 C CNN
+F 0 "R27" V 7430 6400 50  0000 C CNN
 F 1 "1M" V 7350 6400 50  0000 C CNN
 F 2 "Resistors_SMD:R_0805_HandSoldering" V 7280 6400 50  0001 C CNN
 F 3 "http://www.yageo.com/NewPortal/yageodocoutput?fileName=/pdf/R-Chip/PYu-RC_Group_51_RoHS_L_4.pdf" H 7350 6400 50  0001 C CNN
