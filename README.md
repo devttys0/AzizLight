@@ -5,26 +5,46 @@ This circuit allows the user to turn an AC outlet on or off using a simple phras
 
 It does, however, provide the *illusion* of intelligence, and provides mitigations against false positive responses that typically plague such simple voice-activated circuits.
 
-<div style="text-align:center;">
-<!-- [![Aziz, light!](http://img.youtube.com/vi/mvwd13F_1Gs/0.jpg)](https://www.youtube.com/watch?v=mvwd13F_1Gs "Aziz, light!") -->
-<img src="http://img.youtube.com/vi/mvwd13F_1Gs/0.jpg" />
-</div>
+[![Aziz, light!](http://img.youtube.com/vi/mvwd13F_1Gs/0.jpg)](https://www.youtube.com/watch?v=mvwd13F_1Gs "Aziz, light!")
 
 Functional Overview
 ===================
 
-The circuit attempts to prevent/mitigate the false positive responses by:
+The circuit is activated by any sound that is loud enough, and persists long enough, to trigger it. The trigger sensitivity is user-adjustable, and can be configured to either turn an AC outlet on or off when triggered.
 
- 1. Filtering out unwanted audio frequencies.
- 2. Ignoring low-level audio signals.
- 3. The cricuit can either turn the AC outlent on or off, **not both**. Otherwise, if using this circuit to turn on, say, a TV, the audio output of the TV may re-activate the circuit and turn the TV back off (a common problem with "the clapper").
+Once the circuit is triggered, it will wait until the sound stops before activating the trigger output; this allows users to turn the outlet on/off using any arbitrary phrase ("Aziz, light!", "Turn out those lights!", "It's dark in here, I can't see a thing!", etc).
+
+In the absense of any subsequent sound(s), the trigger output will remain on for approximately 60 seconds before turning off again. During this period, the trigger output cannot be turned off by any additional sound or noise.
+
+False positive triggers are unavoidable in any voice-activated system. This circuit attempts to prevent/mitigate false positive responses by:
+
+ 1. Ignoring low-level audio signals.
+ 2. Filtering out very high or low frequency audio signals.
+ 3. The cricuit can either turn the AC outlet on or off, **not both** (the desired action can be selected via a toggle switch).
  4. The circuit will only activate for a short period of time (~60 seconds). This way if a false positive is encountered, the effect is only temporary.
 
-These mitigations, particularly #4, place restrictions on the usefulness of the circuit, but are perfectly acceptable for many applications (e.g., temporarily turning the lights on/off). Mitigation #4 also serves to more accurately simulate a sleepy "Aziz", which was the inspiration for this circuit:
+Mitigation #1 prevents softer sounds from building up a voltage sufficient to trigger the circuit.
 
+Mitigation #2 provides immunity from triggering on obviously unwanted audio.
+
+Mitigation #3 is included to prevent systems connected to the AC outlet from accidentally turning themselves off. Otherwise, if using this circuit to turn on, say, a TV, the audio output of the TV may re-activate the circuit and turn the TV back off (a common problem with "the clapper").
+
+Mitigation #4 ensures that the effect of any false positive trigger(s) is only temporary; it also serves to more accurately simulate a sleepy "Aziz", which was the original inspiration for this circuit.
+
+Circuit Description
+===================
+
+The circuit is comprised of two comparators and three op amps, which provide the necessary blocks for operation:
+
+ 1. Audio amplifier
+ 2. Rectifier
+ 3. Envelope detector
+ 4. Level detection
+ 5. Signal processing / logic control
+ 6. Relay driver
 
 Audio Amplifier / Rectifier
-===========================
+---------------------------
 
 Op amp U1a serves to amplify and half-wave rectify the audio signal from the electret microphone (MIC1).
 
@@ -35,12 +55,12 @@ Diodes D4, D5 and D6 prevent the op amp's output from saturating in the presence
 R10 provides biasing to the electret microphone, with R10 and C5 forming a high-pass filter with a cutoff at 284Hz. R17 and C9 form a low-pass filter with a cutoff frequency at 2.8kHz. This provides a ~2.5kHz passband, attenuating higher or lower frequency noise.
 
 Envelope Detector
-=================
+-----------------
 
 The rectified audio signal is passed through the low-pass filter formed by R12 and C6 to create an output voltage which is proportional to the envelope of the rectified signal. This envelope voltage is buffered by op amp U1B to prevent the preceeding stage(s) from loading down the voltage on C6, as well as to prevent interaction between C6 and U2a's output voltage (via U2a's hysteresis resistors).
 
 Signal Processing
-=================
+-----------------
 
 Comparator U2a monitors the signal's envelop voltage on capacitor C6, only outputting a logic '1' (+5V) if C6's voltage exceeds the set threshold voltage. The threshold voltage is set by R18, R20, R22, and potentiometer RV1, where RV1 provides an adjustable sensitivity setting by changing the minimum threshold voltage. Note that the hysteresis resistors R2 and R14 also affect the threshold voltage, but are fixed and not adjustable.
 
@@ -53,7 +73,7 @@ The delay caused by the charging of C7 is desirable, as it allows for a sequence
 The slow bleed off of C7 is necessary so that a) audio signals do not cause a build up of charge over an indefinite period of time, and b) once activated, the relay is turned off after some relatively short period of time.
 
 Level Detection
-===============
+---------------
 
 Comparator U2b monitors the voltage of C7 and outputs a logic "1" (+5V) when C7's voltage reaches the comparator's logic-high threshold voltage which is set by R21 and R19, as well as the hysteresis resistors R9 and R15.
 
@@ -72,7 +92,7 @@ When the voltage on C7 bleeds off below U2b's logic-low threshold level, U2b wil
 Resistor R25 is included to de-Q any potential LC resonant circuit formed between Q2/Q3's gate capacitances and the potential load inductance.
 
 Relay Driver
-============
+------------
 
 The relay driver circuitry is housed in a separate enclosure from the rest of the circuit, and is used to drive relay K1 on/off in order to turn a standard AC outlet on/off. A standard audio cable was used to connect the control circuitry to the relay driver board.
 
@@ -81,3 +101,4 @@ Transistor Q5 drives the relay's inductor. R24 is a pull-down resistor to ensure
 Diode D7 is a flyback diode, which protects Q3 from the inductive kick-back of suddenly removing current from K1's inductor.
 
 Switch SW2 provides a manual override to always turn the AC outlet on, if desired.
+
