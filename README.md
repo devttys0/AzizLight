@@ -21,7 +21,7 @@ False positive triggers are unavoidable in any voice-activated system. This circ
  1. Ignoring low-level audio signals.
  2. Filtering out very high or low frequency audio signals.
  3. The cricuit can either turn the AC outlet on or off, **not both** (the desired action can be selected via a toggle switch).
- 4. The circuit will only activate for a short period of time (~60 seconds). This way if a false positive is encountered, the effect is only temporary.
+ 4. The circuit will only activate for a short period of time (~60 seconds).
 
 Mitigation #1 prevents softer sounds from building up a voltage sufficient to trigger the circuit.
 
