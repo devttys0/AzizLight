@@ -6,7 +6,8 @@ This circuit allows the user to turn an AC outlet on or off using a simple phras
 It does, however, provide the *illusion* of intelligence, and provides mitigations against false positive responses that typically plague such simple voice-activated circuits.
 
 <div style="text-align:center;">
-[![Aziz, light!](http://img.youtube.com/vi/mvwd13F_1Gs/0.jpg)](https://www.youtube.com/watch?v=mvwd13F_1Gs "Aziz, light!")
+<!-- [![Aziz, light!](http://img.youtube.com/vi/mvwd13F_1Gs/0.jpg)](https://www.youtube.com/watch?v=mvwd13F_1Gs "Aziz, light!") -->
+<img src="http://img.youtube.com/vi/mvwd13F_1Gs/0.jpg" />
 </div>
 
 Functional Overview
