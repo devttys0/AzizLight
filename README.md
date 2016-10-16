@@ -1,11 +1,18 @@
-Overview
-========
+Introduction
+============
 
-This circuit allows the user to turn an AC outlet on or off using a simple phrase, such as "Aziz, light!!". Ultimately, this is not an intelligent circuit in that it does not repsond to specific commands, but only to the amplitude of the detected speech (in other words, it is a glorified "clapper").
+This circuit allows the user to turn an AC outlet on or off using a simple phrase, such as "Aziz, light!!". Note that it is not an intelligent circuit in that it does not repsond to specific commands, but only to the amplitude of the detected speech.
 
-It does provide the *illusion* of intelligence however, by delaying activation of the AC outlet switch until the user finishes their chosen phrase, and by taking steps to prevent/mitigate false positive responses.
+It does, however, provide the *illusion* of intelligence, and provides mitigations against false positive responses that typically plague such simple voice-activated circuits.
 
-The circuit attempts to prevent/mitigate the false positive responses which typically plague these types of systems by:
+<div style="text-align:center;">
+[![Aziz, light!](http://img.youtube.com/vi/mvwd13F_1Gs/0.jpg)](https://www.youtube.com/watch?v=mvwd13F_1Gs "Aziz, light!")
+</div>
+
+Functional Overview
+===================
+
+The circuit attempts to prevent/mitigate the false positive responses by:
 
  1. Filtering out unwanted audio frequencies.
  2. Ignoring low-level audio signals.
@@ -14,7 +21,6 @@ The circuit attempts to prevent/mitigate the false positive responses which typi
 
 These mitigations, particularly #4, place restrictions on the usefulness of the circuit, but are perfectly acceptable for many applications (e.g., temporarily turning the lights on/off). Mitigation #4 also serves to more accurately simulate a sleepy "Aziz", which was the inspiration for this circuit:
 
-[![Aziz, light!](http://img.youtube.com/vi/mvwd13F_1Gs/0.jpg)](https://www.youtube.com/watch?v=mvwd13F_1Gs "Aziz, light!")
 
 Audio Amplifier / Rectifier
 ===========================
