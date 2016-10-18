@@ -460,53 +460,53 @@ $EndComp
 $Comp
 L C C11
 U 1 1 58000190
-P 7150 8150
-F 0 "C11" H 7175 8250 50  0000 L CNN
-F 1 "0.33uF" H 7175 8050 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 7188 8000 50  0001 C CNN
-F 3 "http://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.pdf" H 7150 8150 50  0001 C CNN
-F 4 "Murata" H 7150 8150 60  0001 C CNN "Manufacturer"
-F 5 "GRM21AR72A334KAC5L" H 7150 8150 60  0001 C CNN "Manufacturer Part #"
-F 6 "Digikey" H 7150 8150 60  0001 C CNN "Supplier"
-F 7 "490-6462-1-ND" H 7150 8150 60  0001 C CNN "Supplier Part #"
-	1    7150 8150
+P 2400 9850
+F 0 "C11" H 2425 9950 50  0000 L CNN
+F 1 "0.33uF" H 2425 9750 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 2438 9700 50  0001 C CNN
+F 3 "http://www.murata.com/~/media/webrenewal/support/library/catalog/products/capacitor/mlcc/c02e.pdf" H 2400 9850 50  0001 C CNN
+F 4 "Murata" H 2400 9850 60  0001 C CNN "Manufacturer"
+F 5 "GRM21AR72A334KAC5L" H 2400 9850 60  0001 C CNN "Manufacturer Part #"
+F 6 "Digikey" H 2400 9850 60  0001 C CNN "Supplier"
+F 7 "490-6462-1-ND" H 2400 9850 60  0001 C CNN "Supplier Part #"
+	1    2400 9850
 	1    0    0    -1  
 $EndComp
 $Comp
 L INDUCTOR_SMALL L1
 U 1 1 5800062F
-P 6700 7900
-F 0 "L1" H 6700 8000 50  0000 C CNN
-F 1 "10uH" H 6700 7850 50  0000 C CNN
-F 2 "Resistors_SMD:R_0805_HandSoldering" H 6700 7900 50  0001 C CNN
-F 3 "http://ds.yuden.co.jp/TYCOMPAS/ut/detail.do?productNo=LBR2012T100K&fileName=LBR2012T100K_SS&mode=specSheetDownload" H 6700 7900 50  0001 C CNN
-F 4 "Taylo Yuden" H 6700 7900 60  0001 C CNN "Manufacturer"
-F 5 "LBR2012T100K" H 6700 7900 60  0001 C CNN "Manufacturer Part #"
-F 6 "Digikey" H 6700 7900 60  0001 C CNN "Supplier"
-F 7 "587-2045-1-ND" H 6700 7900 60  0001 C CNN "Supplier Part #"
-	1    6700 7900
+P 1950 9600
+F 0 "L1" H 1950 9700 50  0000 C CNN
+F 1 "10uH" H 1950 9550 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" H 1950 9600 50  0001 C CNN
+F 3 "http://ds.yuden.co.jp/TYCOMPAS/ut/detail.do?productNo=LBR2012T100K&fileName=LBR2012T100K_SS&mode=specSheetDownload" H 1950 9600 50  0001 C CNN
+F 4 "Taylo Yuden" H 1950 9600 60  0001 C CNN "Manufacturer"
+F 5 "LBR2012T100K" H 1950 9600 60  0001 C CNN "Manufacturer Part #"
+F 6 "Digikey" H 1950 9600 60  0001 C CNN "Supplier"
+F 7 "587-2045-1-ND" H 1950 9600 60  0001 C CNN "Supplier Part #"
+	1    1950 9600
 	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR026
 U 1 1 58000DC1
-P 8350 8500
-F 0 "#PWR026" H 8350 8250 50  0001 C CNN
-F 1 "GND" H 8350 8350 50  0000 C CNN
-F 2 "" H 8350 8500 50  0000 C CNN
-F 3 "" H 8350 8500 50  0000 C CNN
-	1    8350 8500
+P 3600 10200
+F 0 "#PWR026" H 3600 9950 50  0001 C CNN
+F 1 "GND" H 3600 10050 50  0000 C CNN
+F 2 "" H 3600 10200 50  0000 C CNN
+F 3 "" H 3600 10200 50  0000 C CNN
+	1    3600 10200
 	1    0    0    -1  
 $EndComp
 $Comp
 L +5V #PWR027
 U 1 1 58001CF6
-P 8350 7750
-F 0 "#PWR027" H 8350 7600 50  0001 C CNN
-F 1 "+5V" H 8350 7890 50  0000 C CNN
-F 2 "" H 8350 7750 50  0000 C CNN
-F 3 "" H 8350 7750 50  0000 C CNN
-	1    8350 7750
+P 3600 9450
+F 0 "#PWR027" H 3600 9300 50  0001 C CNN
+F 1 "+5V" H 3600 9590 50  0000 C CNN
+F 2 "" H 3600 9450 50  0000 C CNN
+F 3 "" H 3600 9450 50  0000 C CNN
+	1    3600 9450
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -684,16 +684,16 @@ $EndComp
 $Comp
 L C C12
 U 1 1 5801DDC3
-P 8350 8150
-F 0 "C12" H 8200 8250 50  0000 L CNN
-F 1 "0.1uF" H 8100 8050 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 8388 8000 50  0001 C CNN
-F 3 "http://psearch.murata.com/capacitor/product/GCM21BR72A104KA37%23.pdf" H 8350 8150 50  0001 C CNN
-F 4 "Murata" V 8350 8150 60  0001 C CNN "Manufacturer"
-F 5 "GCM21BR72A104KA37L" V 8350 8150 60  0001 C CNN "Manufacturer Part #"
-F 6 "Digikey" V 8350 8150 60  0001 C CNN "Supplier"
-F 7 "490-4789-1-ND" V 8350 8150 60  0001 C CNN "Supplier Part #"
-	1    8350 8150
+P 3600 9850
+F 0 "C12" H 3450 9950 50  0000 L CNN
+F 1 "0.1uF" H 3350 9750 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 3638 9700 50  0001 C CNN
+F 3 "http://psearch.murata.com/capacitor/product/GCM21BR72A104KA37%23.pdf" H 3600 9850 50  0001 C CNN
+F 4 "Murata" V 3600 9850 60  0001 C CNN "Manufacturer"
+F 5 "GCM21BR72A104KA37L" V 3600 9850 60  0001 C CNN "Manufacturer Part #"
+F 6 "Digikey" V 3600 9850 60  0001 C CNN "Supplier"
+F 7 "490-4789-1-ND" V 3600 9850 60  0001 C CNN "Supplier Part #"
+	1    3600 9850
 	-1   0    0    -1  
 $EndComp
 $Comp
@@ -969,12 +969,12 @@ $EndComp
 $Comp
 L CONN_01X02 P1
 U 1 1 5802CD61
-P 5950 7950
-F 0 "P1" H 6100 7900 50  0000 C CNN
-F 1 "+9V" H 6100 8000 50  0000 C CNN
-F 2 "Capacitors_SMD:C_2225_HandSoldering" H 5950 7950 50  0001 C CNN
-F 3 "" H 5950 7950 50  0000 C CNN
-	1    5950 7950
+P 1200 9650
+F 0 "P1" H 1350 9600 50  0000 C CNN
+F 1 "+9V" H 1350 9700 50  0000 C CNN
+F 2 "Capacitors_SMD:C_2225_HandSoldering" H 1200 9650 50  0001 C CNN
+F 3 "" H 1200 9650 50  0000 C CNN
+	1    1200 9650
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -1024,27 +1024,27 @@ $EndComp
 $Comp
 L PWR_FLAG #FLG033
 U 1 1 58022F0A
-P 8800 8500
-F 0 "#FLG033" H 8800 8595 50  0001 C CNN
-F 1 "PWR_FLAG" H 8800 8680 50  0000 C CNN
-F 2 "" H 8800 8500 50  0000 C CNN
-F 3 "" H 8800 8500 50  0000 C CNN
-	1    8800 8500
+P 4050 10200
+F 0 "#FLG033" H 4050 10295 50  0001 C CNN
+F 1 "PWR_FLAG" H 4050 10380 50  0000 C CNN
+F 2 "" H 4050 10200 50  0000 C CNN
+F 3 "" H 4050 10200 50  0000 C CNN
+	1    4050 10200
 	-1   0    0    1   
 $EndComp
 $Comp
 L LM7805CT U4
 U 1 1 58021C9C
-P 7750 7950
-F 0 "U4" H 7550 8150 50  0000 C CNN
-F 1 "MC7805" H 7750 8150 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:TO-252-2Lead" H 7750 8050 50  0001 C CIN
-F 3 "http://www.onsemi.com/pub_link/Collateral/MC7800-D.PDF" H 7750 7950 50  0001 C CNN
-F 4 "ON Semiconductor" H 7750 7950 60  0001 C CNN "Manufacturer"
-F 5 "MC7805BDTRKG" H 7750 7950 60  0001 C CNN "Manufacturer Part #"
-F 6 "Digikey" H 7750 7950 60  0001 C CNN "Supplier"
-F 7 "MC7805BDTRKGOSCT-ND" H 7750 7950 60  0001 C CNN "Supplier Part #"
-	1    7750 7950
+P 3000 9650
+F 0 "U4" H 2800 9850 50  0000 C CNN
+F 1 "MC7805" H 3000 9850 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:TO-252-2Lead" H 3000 9750 50  0001 C CIN
+F 3 "http://www.onsemi.com/pub_link/Collateral/MC7800-D.PDF" H 3000 9650 50  0001 C CNN
+F 4 "ON Semiconductor" H 3000 9650 60  0001 C CNN "Manufacturer"
+F 5 "MC7805BDTRKG" H 3000 9650 60  0001 C CNN "Manufacturer Part #"
+F 6 "Digikey" H 3000 9650 60  0001 C CNN "Supplier"
+F 7 "MC7805BDTRKGOSCT-ND" H 3000 9650 60  0001 C CNN "Supplier Part #"
+	1    3000 9650
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -1319,32 +1319,32 @@ Wire Wire Line
 Wire Wire Line
 	4800 5800 4800 5750
 Wire Wire Line
-	6150 7900 6450 7900
+	1400 9600 1700 9600
 Wire Wire Line
-	6950 7900 7350 7900
+	2200 9600 2600 9600
 Wire Wire Line
-	7150 8000 7150 7900
-Connection ~ 7150 7900
+	2400 9700 2400 9600
+Connection ~ 2400 9600
 Wire Wire Line
-	8350 7750 8350 8000
+	3600 9450 3600 9700
 Wire Wire Line
-	7150 8300 7150 8350
+	2400 10000 2400 10050
 Wire Wire Line
-	8350 8300 8350 8500
+	3600 10000 3600 10200
 Wire Wire Line
-	6150 8000 6250 8000
+	1400 9700 1500 9700
 Wire Wire Line
-	6250 8000 6250 8350
-Connection ~ 7150 8350
-Connection ~ 8350 8350
-Connection ~ 8350 7900
+	1500 9700 1500 10050
+Connection ~ 2400 10050
+Connection ~ 3600 10050
+Connection ~ 3600 9600
 Wire Wire Line
-	7750 8350 7750 8200
-Connection ~ 7750 8350
+	3000 10050 3000 9900
+Connection ~ 3000 10050
 Wire Wire Line
-	8150 7900 8800 7900
+	3400 9600 4050 9600
 Wire Wire Line
-	6250 8350 8800 8350
+	1500 10050 4050 10050
 Wire Wire Line
 	11400 5400 10650 5400
 Wire Wire Line
@@ -1516,23 +1516,23 @@ NoConn ~ 7500 3850
 $Comp
 L CP C4
 U 1 1 5805487D
-P 8800 8150
-F 0 "C4" H 8825 8250 50  0000 L CNN
-F 1 "100uF" H 8825 8050 50  0000 L CNN
-F 2 "Capacitors_SMD:c_elec_6.3x5.8" H 8838 8000 50  0001 C CNN
-F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDE0000/ABA0000C726.pdf" H 8800 8150 50  0001 C CNN
-F 4 "Panasonic" H 8800 8150 60  0001 C CNN "Manufacturer"
-F 5 "EEE-1EA101XP" H 8800 8150 60  0001 C CNN "Manufacturer Part #"
-F 6 "Digikey" H 8800 8150 60  0001 C CNN "Supplier"
-F 7 "PCE3898CT-ND" H 8800 8150 60  0001 C CNN "Supplier Part #"
-	1    8800 8150
+P 4050 9850
+F 0 "C4" H 4075 9950 50  0000 L CNN
+F 1 "100uF" H 4075 9750 50  0000 L CNN
+F 2 "Capacitors_SMD:c_elec_6.3x5.8" H 4088 9700 50  0001 C CNN
+F 3 "https://industrial.panasonic.com/cdbs/www-data/pdf/RDE0000/ABA0000C726.pdf" H 4050 9850 50  0001 C CNN
+F 4 "Panasonic" H 4050 9850 60  0001 C CNN "Manufacturer"
+F 5 "EEE-1EA101XP" H 4050 9850 60  0001 C CNN "Manufacturer Part #"
+F 6 "Digikey" H 4050 9850 60  0001 C CNN "Supplier"
+F 7 "PCE3898CT-ND" H 4050 9850 60  0001 C CNN "Supplier Part #"
+	1    4050 9850
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8800 7900 8800 8000
+	4050 9600 4050 9700
 Wire Wire Line
-	8800 8300 8800 8500
-Connection ~ 8800 8350
+	4050 10000 4050 10200
+Connection ~ 4050 10050
 $Comp
 L CONN_01X03 P2
 U 1 1 58055EC6

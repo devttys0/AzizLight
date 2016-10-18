@@ -1,7 +1,7 @@
 Introduction
 ============
 
-This circuit allows the user to turn an AC outlet on or off using a simple phrase, such as "Aziz, light!!". Note that it is not an intelligent circuit in that it does not repsond to specific commands, but only to the amplitude of the detected speech.
+This circuit allows the user to turn an AC outlet on or off using a simple (or not so simple!) phrase, such as "Aziz, light!!". Note that it is not an intelligent circuit in that it does not repsond to specific commands, but only to the amplitude of the detected speech.
 
 It does, however, provide the *illusion* of intelligence, as well as mitigations against false positive responses that typically plague such simple voice-activated circuits.
 
@@ -37,66 +37,55 @@ Circuit Description
 The circuit is comprised of two comparators and three op amps, which provide the necessary blocks for operation:
 
  1. Audio amplifier
- 2. Rectifier
- 3. Envelope detector
- 4. Level detection
- 5. Signal processing / logic control
- 6. Relay driver
+ 2. Level detection
+ 3. Signal processing / logic control
+ 4. Relay driver
 
-Audio Amplifier / Rectifier
----------------------------
+Audio Amplifier
+---------------
 
-Op amp U1A serves to amplify and half-wave rectify the audio signal from the electret microphone (MIC1).
+Op amp U1A serves to amplify the audio signal from the electret microphone (MIC1). Resistors R11 and R16 set the gain at 100.
 
-Resistors R11 and R19 set the gain at 100, while diode D1 passes the positive half of the incoming waveform; D3 prevents the op amp's output from driving significantly negative during the negative half of the incoming waveform.
-
-Diodes D4, D5 and D6 prevent the op amp's output from saturating in the presence of strong audio signals.
-
-R11 provides biasing to the electret microphone, with R11 and C5 forming a high-pass filter with a cutoff at 284Hz. R19 and C9 form a low-pass filter with a cutoff frequency at 2.8kHz. This provides a ~2.5kHz passband, attenuating higher or lower frequency sounds.
-
-Envelope Detector
------------------
-
-The rectified audio signal is passed through the low-pass filter formed by R13 and C6 to create an output voltage which is proportional to the envelope of the rectified signal. This envelope voltage is buffered by op amp U1B to prevent the preceeding stage(s) from loading down the voltage on C6, as well as to prevent interaction between C6 and U2B's output voltage (via U2B's hysteresis resistors).
+R11 also provides biasing to the electret microphone, with R11 and C5 forming a high-pass filter with a cutoff at 284Hz. R16 and C8 form a low-pass filter with a cutoff frequency at 2.8kHz. This provides a ~2.5kHz passband, attenuating higher or lower frequency sounds.
 
 Signal Processing
 -----------------
 
-Comparator U2A monitors the signal's envelop voltage on capacitor C6, only outputting a logic '1' (+5V) if C6's voltage exceeds the set threshold voltage. The threshold voltage is set by R20, R22, R24, and potentiometer RV1, where RV1 provides an adjustable sensitivity setting by changing the minimum threshold voltage. Note that the hysteresis resistors R2 and R14 also affect the threshold voltage, but are fixed and not adjustable.
+Comparator U2A monitors the amplified signal's voltage, only outputting a logic '1' (+5V) if the peak voltage exceeds the set threshold voltage. The threshold voltage is set by R19, R21, R23, and potentiometer RV1, where RV1 provides an adjustable sensitivity setting by changing the minimum threshold voltage. Note that the hysteresis resistors R2 and R13 also affect the threshold voltage, but are fixed and not adjustable.
 
-The purpose of setting this minimum threshold voltage is to ensure that a sequence of low-amplitude audio signals do not build up charge on capacitor C7 and ultimately trigger relay K1; the user-adjustable sensitivity control is an added bonus.
+The purpose for setting this minimum threshold voltage is to ensure that a sequence of low-amplitude audio signals do not build up charge on capacitor C6 and ultimately trigger relay K1; the user-adjustable sensitivity control is an added bonus.
 
-Comparator U2A's output is used to charge capacitor C7 via resistor R1 (U2 has an open-collector output) and diode D2. This allows charge to build up in C7 over time; this charge is bled off slowly via resistors R16 and R18, while op amp U3 provides a high-impedance buffer between C7 and the rest of the circuit (again, for loading and isolation purposes).
+Comparator U2A's output is used to charge capacitor C6 via resistor R1 (U2 has an open-collector output) and diode D1. This allows charge to build up on C6 over time; this charge is bled off slowly via resistors R15 and R18, while op amp U1B provides a high-impedance isolation buffer between C6 and the rest of the circuit.
 
-The delay caused by the charging of C7 is desirable, as it prevents short sounds from raising the voltage on C7 beyond the trigger voltage threshold. This prevents false positive triggers from short-lived noises.
+The delay caused by the charging of C6 is desirable, as it prevents short sounds from raising the voltage on C6 beyond the trigger voltage threshold. This prevents false positive triggers from short-lived noises.
 
-The slow bleed off of C7 is necessary so that a) audio signals do not cause a build up of charge over an indefinite period of time, and b) once activated, the relay is turned off after some period of time.
+The slow bleed off of C6 is necessary so that a) audio signals do not cause a build up of charge over an indefinite period of time, and b) once activated, the relay is turned off after some period of time.
 
 Level Detection
 ---------------
 
-Comparator U2b monitors the voltage of C7 and outputs a logic "1" (+5V) when C7's voltage reaches the comparator's logic-high threshold voltage which is set by R21 and R25, as well as the hysteresis resistors R10 and R15.
+Comparator U2B monitors the voltage of C6 and outputs a logic "1" (+5V) when C6's voltage reaches the comparator's logic-high threshold voltage which is set by R20 and R22, as well as the hysteresis resistors R10 and R14. Once this threshold voltage is reached, U2B's output will go high and the circuit is triggered.
 
-Being an open-collector output, the +5V from the comparator charges capacitor C8 via resistor R7. This delays the turn on of transistor Q1. When C8's voltage is large enough, it will turn on Q1 which, in turn, will turn off Q2 and Q3.
+Being an open-collector output, the +5V from the comparator charges capacitor C7 via resistor R6. This delays the turn on of transistor Q2. When C7's voltage is large enough, it will turn on Q2 which, in turn, will turn off Q1 and Q3.
 
-To maintain the illusion of intelligence, C8's voltage must be kept below Q1's Vgs until after the user is finished speaking their phrase. To ensure this, C8 is discharged through transistor Q4 whenever the input audio amplitude is loud enough to trigger comparator U2A. This way, as long as the user continues talking, C8 will be continually discharged, and Q1 will remain off. After a short pause however, C8 will charge up and turn on Q1.
+To maintain the illusion of intelligence, C7's voltage must be kept below Q2's Vgs until after the user is finished speaking their phrase. To ensure this, C8 is discharged through transistor Q4 whenever the input audio amplitude is loud enough to trigger comparator U2A. This way, as long as the user continues talking, C7 will be continually discharged, and Q2 will remain off. After a short pause however, C7 will charge up and turn on Q2.
 
-Once activated, the output must remain latched for the time constant determined by C7 and R16+R18 (see "Signal Processing" above). Transistor Q3 is included to ensure that any audio input does not prematurely turn off Q1 by discharging C8 through Q4. When Q1 is turn on, Q3 will be turned off, preventing C8 from discharging through Q4, regardless of any input audio.
+Once activated, the output must remain latched for the time constant determined by C6 and R15+R18 (see "Signal Processing" above). Transistor Q3 is included to ensure that any audio input does not prematurely turn off Q2 by discharging C7 through Q4. When Q2 is turn on, Q3 will be turned off, preventing C7 from discharging through Q4, regardless of any input audio.
 
 Transistors Q1 and Q2 provide inverted and non-inverted logic outputs, respectively, which can be selected from by switch SW2. If the output is taken from Q2, then the relay will be normally off, and will be turned on when a verbal command is given; if the output is taken from Q1, then the relay will be normally on, and will be turned off when a verbal command is given. Note that these settings are mutually exclusive.
 
-When the voltage on C7 bleeds off below U2B's logic-low threshold level, U2B will turn off. This means that the voice-activated command will only take effect for a finite period of time (about 60 seconds, depending on the charge of C7).
+When the voltage on C6 bleeds off below U2B's logic-low threshold level, U2B will turn off. This means that the voice-activated command will only take effect for a finite period of time (about 60 seconds, depending on the charge of C6).
 
-Resistor R17 is included to de-Q any potential LC resonant circuit formed between Q2/Q3's gate capacitances and the potential load inductance.
+Resistor R17 is included to de-Q any potential LC resonant circuit formed between Q1/Q3's gate capacitances and inductance of the wires connecting them to switch SW2.
 
 Relay Driver
 ------------
 
+Transistor Q5 serves to isolate the logic circuitry from the relay driver circuitry. This is necessary in the likely event that the relay drier circtuiry is comprised of an optoisolator or BJT transistor. Without Q5, the voltage drop incurred by the PN junction could affect the logic circuitry's voltage levels.
+
 The relay driver circuitry is housed in a separate enclosure from the rest of the circuit, and is used to drive relay K1 on/off in order to turn a standard AC outlet on/off. A standard audio cable was used to connect the control circuitry to the relay driver board.
 
-Transistor Q5 drives the relay's inductor. R27 is a pull-down resistor to ensure the discharge of Q5's gate capacitance, and R26 is included to dampen any potential resonant circuit formed by the gate capacitance and the source's inductance. Since the relay driver is connected to the control circuitry via a long-ish cable, the cable's inductance can be non-negligable.
-
-Diode D7 is a flyback diode, which protects Q5 from the inductive kick-back of suddenly removing current from K1's inductor.
+Transistor Q6 drives the relay's inductor. Diode D7 is a flyback diode, which protects Q6 from the inductive kick-back of suddenly removing current from K1's inductor.
 
 Switch SW3 provides a manual override to always turn the AC outlet on, if desired.
 

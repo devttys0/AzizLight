@@ -1854,7 +1854,7 @@
   (via (at 126.5428 101.2952) (size 0.6) (drill 0.4) (layers F.Cu B.Cu) (net 7))
   (segment (start 126.5428 101.2952) (end 126.5226 101.3154) (width 0.25) (layer F.Cu) (net 7) (tstamp 58057341))
   (segment (start 122.301 101.3154) (end 126.5226 101.3154) (width 0.25) (layer F.Cu) (net 7) (tstamp 58057342))
-  (segment (start 145.9992 88.4428) (end 145.9992 88.7476) (width 0.25) (layer F.Cu) (net 7) (tstamp 58057C2D) (status 800000))
+  (segment (start 145.9992 88.4428) (end 145.9992 88.7476) (width 0.25) (layer F.Cu) (net 7) (tstamp 58057C2D))
   (segment (start 145.669 88.1126) (end 145.9992 88.4428) (width 0.25) (layer F.Cu) (net 7) (tstamp 58057C2C))
   (segment (start 144.653 88.1126) (end 145.669 88.1126) (width 0.25) (layer F.Cu) (net 7) (tstamp 58057C2B))
   (via (at 144.653 88.1126) (size 0.6) (drill 0.4) (layers F.Cu B.Cu) (net 7))
