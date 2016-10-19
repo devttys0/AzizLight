@@ -173,10 +173,10 @@ Wire Wire Line
 	8850 6200 8850 5750
 Connection ~ 8850 5750
 $Comp
-L R R26
+L R R29
 U 1 1 58029A35
 P 7100 6050
-F 0 "R26" V 7180 6050 50  0000 C CNN
+F 0 "R29" V 7180 6050 50  0000 C CNN
 F 1 "1k" V 7100 6050 50  0000 C CNN
 F 2 "Resistors_SMD:R_0805_HandSoldering" V 7030 6050 50  0001 C CNN
 F 3 "http://www.yageo.com/NewPortal/yageodocoutput?fileName=/pdf/R-Chip/PYu-RC_Group_51_RoHS_L_4.pdf" H 7100 6050 50  0001 C CNN

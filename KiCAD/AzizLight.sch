@@ -1559,4 +1559,35 @@ Wire Wire Line
 	15150 3250 15100 3250
 Wire Wire Line
 	15100 3250 15100 3150
+$Comp
+L R R28
+U 1 1 5807572E
+P 9800 6250
+F 0 "R28" V 9880 6250 50  0000 C CNN
+F 1 "1M" V 9800 6250 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 9730 6250 50  0001 C CNN
+F 3 "http://www.yageo.com/NewPortal/yageodocoutput?fileName=/pdf/R-Chip/PYu-RC_Group_51_RoHS_L_4.pdf" H 9800 6250 50  0001 C CNN
+F 4 "Yageo" V 9800 6250 60  0001 C CNN "Manufacturer"
+F 5 "RC0805FR-071ML" V 9800 6250 60  0001 C CNN "Manufacturer Part #"
+F 6 "Digikey" V 9800 6250 60  0001 C CNN "Supplier"
+F 7 "311-1.00MCRCT-ND" V 9800 6250 60  0001 C CNN "Supplier Part #"
+	1    9800 6250
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	9800 6100 9800 6000
+Connection ~ 9800 6000
+$Comp
+L GND #PWR039
+U 1 1 58075E90
+P 9800 6450
+F 0 "#PWR039" H 9800 6200 50  0001 C CNN
+F 1 "GND" H 9800 6300 50  0000 C CNN
+F 2 "" H 9800 6450 50  0000 C CNN
+F 3 "" H 9800 6450 50  0000 C CNN
+	1    9800 6450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 6450 9800 6400
 $EndSCHEMATC
